@@ -61,9 +61,11 @@
                     });
                 };
                 $scope.next = function () {
+
                     $scope.current_question++;
                     $scope.display_answer_blob = false;
                     $scope.display_next = false;
+                    resetCounter();
                 };
                 $scope.display_next_and_blob = function (){
 
@@ -93,7 +95,7 @@
                     <div ng-if="current_question === 4">
                         <p> This the end </p>
                     </div>
-                    
+
                 </main><!--
              --><aside class="graphic grid__item lap-and-up-one-half">
                     <div class="countdown">
