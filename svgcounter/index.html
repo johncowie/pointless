@@ -56,6 +56,7 @@
                     start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
                         $scope.display_answer_blob = true;
                         $scope.display_next = true;
+                        $scope.$digest();
                     });
                 };
                 $scope.next = function () {
@@ -63,6 +64,9 @@
                     $scope.display_answer_blob = false;
                     $scope.display_next = false;
                 };
+                $scope.display_next_and_blob = function (){
+                    
+                }
             });
         </script>
     </head>
