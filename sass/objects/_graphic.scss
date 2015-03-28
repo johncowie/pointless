@@ -10,8 +10,9 @@
   overflow: hidden;
   border-left: 8px solid #E8B925;
   border-top: 8px solid #E8B925;
+  box-shadow: 1px -3px 8px rgba(0, 0, 0, 0.5);
 
-  #countdown {
+  .countdown {
     float: right;
   }
 }

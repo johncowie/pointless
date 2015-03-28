@@ -12,6 +12,7 @@
   border-bottom: 8px solid #E8B925;
   padding-right: 12%;
   padding-top: 30px;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.5);
 }
 
 .answers {
@@ -25,10 +26,14 @@
     text-transform: uppercase;
     border: 4px solid #E8B925;
     margin-bottom: 8px;
+    color: #F2E719;
 
-    a {
-      color: #F2E719;
-      text-decoration: none;
+    &:hover {
+      background: #422467;
+    }
+
+    &:active {
+      background: #4736b0;
     }
   }
 }
