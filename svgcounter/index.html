@@ -72,7 +72,7 @@
                 <h1>The pointless everything</h1></div>
             <div id="question-block" ng-if="current_question < 4">
                 <h2>{{questions[current_question].question}}</h2>
-                <p ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</p>         
+                <p ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</p>
             </div>
             <div id="answer-blob">
                 <p ng-if="display_answer_blob === true">{{questions[current_question].answers[chosen_answer].blob}}</p>
