@@ -52,12 +52,14 @@
                 $scope.chosen_answer = 0;
                 $scope.display_answer_blob = false;
                 $scope.display_next = false;
+                $scope.total_points = 0;
 
                 $scope.show_blob = function (answer_index) {
                     $scope.chosen_answer = answer_index;
                     start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
                         $scope.display_answer_blob = true;
                         $scope.display_next = true;
+                         $scope.total_points += $scope.questions[$scope.current_question].answers[answer_index].points;
                         $scope.$digest();
                     });
                 };
@@ -92,7 +94,8 @@
                     </div>
                     <button ng-if="display_next === true" ng-click="next()">Next</button>
                     <div ng-if="current_question === 4">
-                        <p> This the end </p>
+                        <p> This is the end </p>
+                        <p> Your points: {{total_points}}</p>
                     </div>
                     
                 </main><!--
