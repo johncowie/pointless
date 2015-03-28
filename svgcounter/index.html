@@ -51,17 +51,21 @@
                 $scope.chosen_answer = 0;
                 $scope.display_answer_blob = false;
                 $scope.display_next = false;
+                $scope.can_answer = true;
 
                 $scope.show_blob = function (answer_index) {
-                    $scope.chosen_answer = answer_index;
-                    start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
-                        $scope.display_answer_blob = true;
-                        $scope.display_next = true;
-                        $scope.$digest();
-                    });
+                    if($scope.can_answer) {
+                        $scope.chosen_answer = answer_index;
+                        $scope.can_answer = false;
+                        start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
+                            $scope.display_answer_blob = true;
+                            $scope.display_next = true;
+                            $scope.$digest();
+                        });
+                    }
                 };
                 $scope.next = function () {
-
+                    $scope.can_answer = true;
                     $scope.current_question++;
                     $scope.display_answer_blob = false;
                     $scope.display_next = false;
