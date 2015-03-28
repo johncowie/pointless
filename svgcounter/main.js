@@ -40,7 +40,12 @@ var text = scoreContainer
                 .attr("font-size", "60px")
                 .text("100");
 
-var running = true;
+function resetCounter() {
+  c.attr("height", 500);
+  c.attr("y", 0);
+  pink.attr("y", 0);
+  text.text(100);
+}
 
 function setHeight(percent) {
     var newheight = percent * 5;
@@ -50,8 +55,6 @@ function setHeight(percent) {
     pink.attr("y", newy);
     text.text(percent);
 }
-
-// setInterval(decHeight, 50);
 
 function startIt(current, target, callback) {
     setTimeout(function () {
@@ -67,8 +70,3 @@ function startIt(current, target, callback) {
 function start(target, callback) {
     startIt(100, target, callback);
 }
-
-/*start(5, function(){
- console.log("NICE ONE.");
- });
- */

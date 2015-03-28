@@ -1,0 +1,18 @@
+.graphic {
+  display: block;
+  background: #9a37b8;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 80%;
+  border-top-left-radius: 100%;
+  overflow: hidden;
+  border-left: 8px solid #E8B925;
+  border-top: 8px solid #E8B925;
+  box-shadow: 1px -3px 8px rgba(0, 0, 0, 0.5);
+
+  .countdown {
+    float: right;
+  }
+}

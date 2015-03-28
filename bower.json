@@ -1,0 +1,17 @@
+{
+  "name": "pointless",
+  "version": "0.1.0",
+  "authors": [
+    "Jack Underhill <jack.underhill@hotmail.co.uk>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "inuit.css": "~5.0.1"
+  }
+}
