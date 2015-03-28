@@ -53,12 +53,14 @@
                 $scope.display_answer_blob = false;
                 $scope.display_next = false;
                 $scope.total_points = 0;
+                $scope.display_answers = true;
 
-                $scope.show_blob = function (answer_index) {
+                $scope.answer_clicked = function (answer_index) {
                     $scope.chosen_answer = answer_index;
                     start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
                         $scope.display_answer_blob = true;
                         $scope.display_next = true;
+                        $scope.display_answers = false;
                          $scope.total_points += $scope.questions[$scope.current_question].answers[answer_index].points;
                         $scope.$digest();
                     });
@@ -67,6 +69,7 @@
                     $scope.current_question++;
                     $scope.display_answer_blob = false;
                     $scope.display_next = false;
+                    $scope.display_answers = true;
                 };
                 $scope.display_next_and_blob = function (){
 
@@ -83,14 +86,15 @@
                 <main class="main grid__item lap-and-up-one-half text--center">
                     <h2 class="question">Can you find a pointless answer?</h2>
 
-                    <div id="question-block" ng-if="current_question < 4">
+                    <div id="question-block" ng-if="current_question < 4 && display_answers === true">
                         <h2>{{questions[current_question].question}}</h2>
                         <ul class="answers">
-                            <li ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</li>
+                            <li ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="answer_clicked(answer_index)">{{answer_object.answer}}</li>
                         </ul>
                     </div>
-                    <div id="answer-blob">
-                        <p ng-if="display_answer_blob === true">{{questions[current_question].answers[chosen_answer].blob}}</p>
+                    <div id="answer-blob" ng-if="display_answer_blob === true">
+                        <img ng-src="{{'blob-pict-' + (current_question + 1) }}" />
+                        <p>{{questions[current_question].answers[chosen_answer].blob}}</p>
                     </div>
                     <button ng-if="display_next === true" ng-click="next()">Next</button>
                     <div ng-if="current_question === 4">
