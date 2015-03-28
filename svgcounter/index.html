@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Pointless App</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
+        <link rel="stylesheet" type="text/css" href="css/app.css"/>
         <script src="jquery-1.11.2.min.js" charset="utf-8"></script>
         <script src="d3.v3.min.js" charset="utf-8"></script>
         <script src="angular.js"></script>
@@ -72,22 +73,49 @@
     </head>
     <body ng-controller="pointlessAppCtrl">
         <div id="view" ng-view>
-            <div>
-                <h1>Can you find a pointless answer?</h1></div>
-            <div id="question-block" ng-if="current_question < 4">
-                <h2>{{questions[current_question].question}}</h2>
-                <p ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</p>
+
+
+
+
+
+            <div class="grid">
+                <main class="main grid__item lap-and-up-one-half text--center">
+
+                    <h2 class="question">Can you find a pointless answer?</h2>
+
+                    <div id="question-block" ng-if="current_question < 4">
+                        <h2>{{questions[current_question].question}}</h2>
+                        <ul class="answers">
+                            <li ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</li>
+                        </ul>
+                    </div>
+                    <div id="answer-blob">
+                        <p ng-if="display_answer_blob === true">{{questions[current_question].answers[chosen_answer].blob}}</p>
+                    </div>
+                    <button ng-if="display_next === true" ng-click="next()">Next</button>
+                    <div ng-if="current_question === 4">
+                        <p> This the end </p>
+                    </div>
+                    
+                </main><!--
+
+
+
+             --><aside class="graphic grid__item lap-and-up-one-half">
+                    <div id="score"></div>
+                    <div id="countdown"></div>
+                </aside>
             </div>
-            <div id="answer-blob">
-                <p ng-if="display_answer_blob === true">{{questions[current_question].answers[chosen_answer].blob}}</p>
-            </div>
-            <button ng-if="display_next === true" ng-click="next()">Next</button>
-            <div ng-if="current_question === 4">
-                <p> This the end </p>
-            </div>
-            <div id="score"></div>
-            <div id="countdown"></div>
+
+
+            
             <script src="main.js"></script>
+
+
+
+
         </div>
+
+        <footer>The original Pointless TV show is owned by Endemol UK Ltd. This is a parody website and no copyright infringment is intended. To get in touch, email <a href="mailto:example@example.com" title="">example@example.com</a></footer>
     </body>
 </html>
