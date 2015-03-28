@@ -1,0 +1,14 @@
+#countdown {
+    height: 500px;
+    width: 200px;
+    background-color: #000099;
+}
+
+#score {
+    width: 200px;
+    font-size: 4em;
+    background-color: #007700;
+    color: #FFFF00;
+    text-align: center;
+    font-family: Helvetica, Arial, Sans-Serif;
+}
