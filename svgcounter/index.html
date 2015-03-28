@@ -73,14 +73,11 @@
     </head>
     <body ng-controller="pointlessAppCtrl">
         <div id="view" ng-view>
-
-
-
-
-
+            <header>
+                <h1 class="logo">Pointless</h1>
+            </header>
             <div class="grid">
                 <main class="main grid__item lap-and-up-one-half text--center">
-
                     <h2 class="question">Can you find a pointless answer?</h2>
 
                     <div id="question-block" ng-if="current_question < 4">
@@ -98,22 +95,12 @@
                     </div>
                     
                 </main><!--
-
-
-
              --><aside class="graphic grid__item lap-and-up-one-half">
                     <div id="score"></div>
                     <div id="countdown"></div>
                 </aside>
             </div>
-
-
-            
             <script src="main.js"></script>
-
-
-
-
         </div>
 
         <footer>The original Pointless TV show is owned by Endemol UK Ltd. This is a parody website and no copyright infringment is intended. To get in touch, email <a href="mailto:example@example.com" title="">example@example.com</a></footer>
