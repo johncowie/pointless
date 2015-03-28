@@ -13,12 +13,12 @@
 
             pointlessApp.controller('pointlessAppCtrl', function ($scope) {
                 $scope.questions = [
-                    {'question': 'This is tue question 1111',
+                    {'question': 'Percentage of jobs created across the UK',
                         'answers': [
-                            {'answer': 'Answer 1', 'points': 10, 'blob': "blob answer 1"},
-                            {'answer': 'Answer 2', 'points': 20, 'blob': "lob answer 2"},
-                            {'answer': 'Answer 3', 'points': 30, 'blob': "lob answer 3"},
-                            {'answer': 'Answer 4', 'points': 40, 'blob': "lob answer 4"}
+                            {'answer': 'North West', 'points': 10, 'blob': "blob answer 1"},
+                            {'answer': 'North East', 'points': 20, 'blob': "lob answer 2"},
+                            {'answer': 'London', 'points': 80, 'blob': "lob answer 3"},
+                            {'answer': 'Midlands', 'points': 40, 'blob': "lob answer 4"}
                         ]
                     },
                     {'question': 'This is another very difficult question 22222222222',
@@ -65,7 +65,7 @@
                     $scope.display_next = false;
                 };
                 $scope.display_next_and_blob = function (){
-                    
+
                 }
             });
         </script>
@@ -73,7 +73,7 @@
     <body ng-controller="pointlessAppCtrl">
         <div id="view" ng-view>
             <div>
-                <h1>The pointless everything</h1></div>
+                <h1>Can you find a pointless answer?</h1></div>
             <div id="question-block" ng-if="current_question < 4">
                 <h2>{{questions[current_question].question}}</h2>
                 <p ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</p>
