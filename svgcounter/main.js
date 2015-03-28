@@ -1,21 +1,21 @@
 var barContainer = d3.select("#countdown")
-                     .append("svg")
-                     .attr("width", 200)
-                     .attr("height", 500);
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 500);
 
 var c = barContainer.append("rect")
-                    .attr("width", 200)
-                    .attr("height", 500)
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .attr("fill", "#BBB");
+        .attr("width", 200)
+        .attr("height", 500)
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("fill", "#BBB");
 
 var pink = barContainer.append("rect")
-            .attr("width", 200)
-            .attr("height", 5)
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("fill", "#ff7700");
+        .attr("width", 200)
+        .attr("height", 5)
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("fill", "#ff7700");
 
 var score = d3.select("#score");
 
@@ -33,8 +33,8 @@ function setHeight(percent) {
 // setInterval(decHeight, 50);
 
 function startIt(current, target, callback) {
-    setTimeout(function() {
-        if(current >= target) {
+    setTimeout(function () {
+        if (current >= target) {
             setHeight(current);
             startIt(--current, target, callback);
         } else {
@@ -47,7 +47,7 @@ function start(target, callback) {
     startIt(100, target, callback);
 }
 
-start(5, function(){
-    console.log("NICE ONE.");
-});
-
+/*start(5, function(){
+ console.log("NICE ONE.");
+ });
+ */

@@ -1,12 +1,89 @@
-<html>
+<!doctype html>
+<html lang="en" ng-app="pointlessApp">
     <head>
-        <link rel="stylesheet" type="text/css" href="main.css">
-    </head>
-    <body>
-        <div id="score">100</div>
-        <div id="countdown"></div>
+        <meta charset="utf-8">
+        <title>Pointless App</title>
+        <link rel="stylesheet" type="text/css" href="main.css"/>
         <script src="jquery-1.11.2.min.js" charset="utf-8"></script>
         <script src="d3.v3.min.js" charset="utf-8"></script>
-        <script src="main.js" charset="utf-8"></script>
+        <script src="angular.js"></script>
+
+        <script>
+            var pointlessApp = angular.module('pointlessApp', []);
+
+            pointlessApp.controller('pointlessAppCtrl', function ($scope) {
+                $scope.questions = [
+                    {'question': 'This is tue question 1111',
+                        'answers': [
+                            {'answer': 'Answer 1', 'points': 10, 'blob': "blob answer 1"},
+                            {'answer': 'Answer 2', 'points': 20, 'blob': "lob answer 2"},
+                            {'answer': 'Answer 3', 'points': 30, 'blob': "lob answer 3"},
+                            {'answer': 'Answer 4', 'points': 40, 'blob': "lob answer 4"}
+                        ]
+                    },
+                    {'question': 'This is another very difficult question 22222222222',
+                        'answers': [
+                            {'answer': 'Answer 1', 'points': 10, 'blob': "lob answer 1"},
+                            {'answer': 'Answer 2', 'points': 20, 'blob': "lob answer 2"},
+                            {'answer': 'Answer 3', 'points': 30, 'blob': "lob answer 3"},
+                            {'answer': 'Answer 4', 'points': 40, 'blob': "lob answer 4"}
+                        ]
+                    },
+                    {'question': 'This is tue question 333333333333',
+                        'answers': [
+                            {'answer': 'Answer 1', 'points': 10, 'blob': "blob answer 1"},
+                            {'answer': 'Answer 2', 'points': 20, 'blob': "lob answer 2"},
+                            {'answer': 'Answer 3', 'points': 30, 'blob': "lob answer 3"},
+                            {'answer': 'Answer 4', 'points': 40, 'blob': "lob answer 4"}
+                        ]
+                    },
+                    {'question': 'This is another very difficult question 444444444444',
+                        'answers': [
+                            {'answer': 'Answer 1', 'points': 10, 'blob': "lob answer 1"},
+                            {'answer': 'Answer 2', 'points': 20, 'blob': "lob answer 2"},
+                            {'answer': 'Answer 3', 'points': 30, 'blob': "lob answer 3"},
+                            {'answer': 'Answer 4', 'points': 40, 'blob': "lob answer 4"}
+                        ]
+                    }
+                ];
+                $scope.current_question = 0;
+                $scope.chosen_answer = 0;
+                $scope.display_answer_blob = false;
+                $scope.display_next = false;
+
+                $scope.show_blob = function (answer_index) {
+                    $scope.chosen_answer = answer_index;
+                    start($scope.questions[$scope.current_question].answers[answer_index].points, function () {
+                        $scope.display_answer_blob = true;
+                        $scope.display_next = true;
+                    });
+                };
+                $scope.next = function () {
+                    $scope.current_question++;
+                    $scope.display_answer_blob = false;
+                    $scope.display_next = false;
+                };
+            });
+        </script>
+    </head>
+    <body ng-controller="pointlessAppCtrl">
+        <div id="view" ng-view>
+            <div>
+                <h1>The pointless everything</h1></div>
+            <div id="question-block" ng-if="current_question < 4">
+                <h2>{{questions[current_question].question}}</h2>
+                <p ng-repeat="(answer_index, answer_object) in questions[current_question].answers" ng-click="show_blob(answer_index)">{{answer_object.answer}}</p>         
+            </div>
+            <div id="answer-blob">
+                <p ng-if="display_answer_blob === true">{{questions[current_question].answers[chosen_answer].blob}}</p>
+            </div>
+            <button ng-if="display_next === true" ng-click="next()">Next</button>
+            <div ng-if="current_question === 4">
+                <p> This the end </p>
+            </div>
+            <div id="score">100</div>
+            <div id="countdown"></div>
+            <script src="main.js"></script>
+        </div>
     </body>
 </html>
